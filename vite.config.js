@@ -22,18 +22,25 @@ export default {
           });
         }
       },
-    }, 
+    },
     {
       name: 'copy-static-files',
       writeBundle() {
-        copyFileSync('src/android-chrome-192x192.png', 'dist/android-chrome-192x192.png');
-        copyFileSync('src/android-chrome-512x512.png', 'dist/android-chrome-512x512.png');
+        copyFileSync(
+          'src/android-chrome-192x192.png',
+          'dist/android-chrome-192x192.png'
+        );
+        copyFileSync(
+          'src/android-chrome-512x512.png',
+          'dist/android-chrome-512x512.png'
+        );
       },
     },
   ],
 
   build: {
     root: './src',
+    sourcemap: true,
     rollupOptions: {
       output: {
         assetFileNames: (asset) => {
@@ -44,12 +51,16 @@ export default {
             nestedPath ? nestedPath + '/' : ''
           }[name][extname]`;
 
-          if (asset.name.includes('favicon') || asset.name.includes('apple-touch-icon') || asset.name.includes('android-chrome') ) {
+          if (
+            asset.name.includes('favicon') ||
+            asset.name.includes('apple-touch-icon') ||
+            asset.name.includes('android-chrome')
+          ) {
             return `${outputPath}`;
           }
 
           console.log(`${asset} - ${asset.name} - ${asset.type}`);
-            console.dir(`${asset}`);
+          console.dir(`${asset}`);
 
           if (asset.type === 'asset') {
             switch (asset.name.split('.').pop()) {
@@ -70,8 +81,7 @@ export default {
           }
         },
         preserveModuleDirectories: true,
-      }
+      },
     },
   },
 };
-
