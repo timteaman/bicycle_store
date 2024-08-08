@@ -1,7 +1,6 @@
 @use './hero/hero';
 @use './about/about';
 @use './rental/rental';
-@use './choose/choose';
 @use './why/why';
 @use './feedback/feedback';
 
@@ -13,5 +12,14 @@
     left: 0;
     right: 0;
     background-color: transparent;
+    z-index: 10;
+
+    .header-bottom {
+      padding-block: 10px 30px;
+    }
+
+    &.scrolled {
+      background-color: var(--c-dark);
+    }
   }
 }

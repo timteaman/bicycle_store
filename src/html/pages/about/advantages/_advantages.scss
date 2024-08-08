@@ -1,0 +1,45 @@
+@use '../../../../styles/mixins/' as*;
+
+.advantages {
+
+  &__inner {
+    display: flex;
+    justify-content: flex-start;
+    padding-block: 100px;
+
+    background-image: url('/src/assets/images/about/about-advantages.webp');
+    background-repeat: no-repeat;
+    background-size: 600px;
+    background-position: right center;
+  }
+
+  .content {
+    max-width: 530px;
+  }
+
+  .title {
+    margin-bottom: 50px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 264px);
+    gap: 10px;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 300;
+
+      &::before {
+        content: '';
+        width: 18px;
+        height: 18px;
+        @include mask-contain;
+        mask-image: var(--icon-list-item);
+        background-color: var(--c-pink);
+      }
+    }
+  }
+}
